@@ -12,14 +12,14 @@ pipeline {
             steps {
                     sh "ls -a"
                     sh "pwd"
-                    sh "docker build -f Dockerfile.bld -t build ."
+                    sh "docker build -f Dockerfile.bld -t irssibld ."
             }
         }
         stage('Test') {
             steps {
                     sh "ls -a"
                     sh "pwd"
-                    sh "docker build -f Dockerfile.test -t test ."
+                    sh "docker build -f Dockerfile.test -t irssitest ."
                 
             }
         }
