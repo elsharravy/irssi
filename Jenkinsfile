@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                sh "ls -a"
                 //sh "rm -rf irssi"
                 //sh "git clone https://github.com/elsharravy/irssi.git"
             }
