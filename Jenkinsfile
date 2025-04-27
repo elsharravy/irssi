@@ -11,6 +11,11 @@ pipeline {
                     sh "docker build -f Dockerfile.bld -t irssibld ."
             }
         }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: '/irssi/Build/src/fe-text/irssi', allowEmptyArchive: false, fingerprint: true
+            }
+        }
         stage('Test') {
             steps {
                     sh "docker build -f Dockerfile.test -t irssitest ."
