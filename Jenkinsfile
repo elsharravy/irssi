@@ -26,13 +26,19 @@ pipeline {
         stage('Archive') {
             steps {
                 sh 'docker cp $(docker ps -q --filter ancestor=irssidep | head -n 1):/usr/local/bin/irssi ${WORKSPACE}/irssi'
-                archiveArtifacts artifacts: 'irssi', allowEmptyArchive: false, fingerprint: true
+                sh 'ls -la ${WORKSPACE}'
+                archiveArtifacts artifacts: '${WORKSPACE}/irssi', allowEmptyArchive: false, fingerprint: true
                 
                 //archiveArtifacts artifacts: '/irssi/Build/src/fe-text/irssi', allowEmptyArchive: false, fingerprint: true
                 //archiveArtifacts artifacts: 'irssidep:/usr/local/bin/irssi', allowEmptyArchive: false, fingerprint: true
-
+                
 
             }
+        }
+        stage('Clean'){
+                       steps {
+               sh 'docker ps -q --filter ancestor=irssidep | xargs docker stop | xargs docker rm'
+            } 
         }
     }
 }
