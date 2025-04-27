@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                sh "docker cp $(docker ps -q --filter ancestor=irssidep):/usr/local/bin/irssi ${WORKSPACE}/irssi"
+                sh "docker cp $(docker ps -q --filter ancestor=irssidep):/usr/local/bin/irssi "${WORKSPACE}"/irssi"
                 archiveArtifacts artifacts: 'irssi', allowEmptyArchive: false, fingerprint: true
                 
                 //archiveArtifacts artifacts: '/irssi/Build/src/fe-text/irssi', allowEmptyArchive: false, fingerprint: true
