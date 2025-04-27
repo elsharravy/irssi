@@ -38,11 +38,7 @@ pipeline {
     }
     post {
         always {
-            stage('Clean') {
-                steps {
                     sh 'docker ps -q --filter ancestor=irssidep | xargs docker stop | xargs docker rm'
-                }
-            }
         }
     }
 }
