@@ -23,5 +23,11 @@ pipeline {
                 
             }
         }
+        stage('Deploy'){
+            steps {
+                    sh "docker build -f Dockerfile.dep -t irssidep ."   
+                    sh "docker run -dit irssidep"
+            }
+        }
     }
 }
