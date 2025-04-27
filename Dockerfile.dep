@@ -4,5 +4,5 @@ FROM fedora
 RUN microdnf install -y glib2 openssl-libs ncurses perl && \
     microdnf clean all
 WORKDIR /irssi
-COPY --from=builder /irssi/Build/src/fe-text/irssi/irssi /usr/local/bin/irssi
+COPY --from=builder /irssi/Build/src/fe-text/irssi /usr/local/bin/irssi
 CMD ["irssi"]
