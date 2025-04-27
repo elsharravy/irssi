@@ -1,6 +1,6 @@
 FROM irssibld as builder
 
-FROM fedora-minimal
+FROM fedora
 RUN microdnf install -y glib2 openssl-libs ncurses perl && \
     microdnf clean all
 WORKDIR /irssi
