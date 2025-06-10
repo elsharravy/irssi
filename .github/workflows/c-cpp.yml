@@ -20,7 +20,14 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y meson ninja-build
+        sudo apt install -y \
+          meson \
+          ninja-build \
+          gcc \
+          libglib2.0-dev \
+          libssl-dev \
+          libncurses-dev \
+          libperl-dev
 
     - name: Configure with Meson
       run: meson Build
